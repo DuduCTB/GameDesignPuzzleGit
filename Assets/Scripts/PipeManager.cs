@@ -9,7 +9,7 @@ public class PipeManager : MonoBehaviour
     [SerializeField] private float detectionRadius;
     [SerializeField] private LayerMask pipeLayer;
 
-    [SerializeField] private PipeType pipeType;
+    public PipeType pipeType;
     [SerializeField] private bool connected;
     [SerializeField] private Material pipeOnMaterial, pipeOffMaterial;
 
@@ -38,6 +38,11 @@ public class PipeManager : MonoBehaviour
         else
         {
             myRenderer.material = pipeOffMaterial;
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            CheckIfPipeIsConected();
         }
     }
 
@@ -110,6 +115,14 @@ public class PipeManager : MonoBehaviour
                 {
                     if (pipes.transform.localPosition.z == transform.localPosition.z + zOffsetCheck || pipes.transform.localPosition.x == transform.localPosition.x + xOffsetCheck)
                     {
+                        switch (pipes.GetComponent<PipeManager>().pipeType)
+                        {
+                            case PipeType.Straight:
+
+
+                                break;
+                        }
+
                         connected = true;
 
                         if (pipes.GetComponent<PipeManager>().turnedOn && pipes.GetComponent<PipeManager>().connected)
@@ -121,5 +134,11 @@ public class PipeManager : MonoBehaviour
 
                 break;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 }
