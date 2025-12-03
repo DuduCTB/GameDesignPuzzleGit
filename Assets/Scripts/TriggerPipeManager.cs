@@ -10,6 +10,7 @@ public class TriggerPipeManager : MonoBehaviour
 
     private Renderer myRenderer;
     public bool recibingGettingEnergy, sendingGettingEnergy;
+    [SerializeField] public GivingEnergyEnd givingPipeEnd;
 
 
     private void Awake()
@@ -26,7 +27,15 @@ public class TriggerPipeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (sendingGettingEnergy)
+        {
+            givingPipeEnd.isSendingEnergy = true;
+            ChangeMaterialBasedOnEnergy(true);
+        }
+        else
+        {
 
+        }
 
         if (Input.GetKeyDown(KeyCode.X))
         {

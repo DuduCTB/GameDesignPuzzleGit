@@ -6,6 +6,7 @@ TagManager:
   tags:
   - recibingEnd
   - givingEnd
+  - energyConnector
   layers:
   - Default
   - TransparentFX
