@@ -8,6 +8,7 @@ public class GivingEnergyEnd : MonoBehaviour
     public bool isSendingEnergy;
     public bool connectedToAnotherPipe;
     [SerializeField] private  RecibingEndPipe recibingEnd;
+    [SerializeField] private  EnergyConector myEnergyConector;
 
     private void Awake()
     {
@@ -31,6 +32,16 @@ public class GivingEnergyEnd : MonoBehaviour
             Debug.Log("extremo detectedado azul se llama = " + recibingEnd.name);
         }
 
+        if (detection.CompareTag("energyConnector"))
+        {
+
+            Debug.Log("Parte giving (azul) propia conectada con recibing (azul) ajena");
+            connectedToAnotherPipe = true;
+            myEnergyConector = detection.GetComponent<EnergyConector>();
+
+            Debug.Log("extremo detectedado azul se llama = " + recibingEnd.name);
+        }
+
     }
 
     private void UpdateAnotherPipeRedEndCharge()
@@ -47,8 +58,21 @@ public class GivingEnergyEnd : MonoBehaviour
             }
             else
             {
-                //recibingEnd.RecibingPartGetsCharged(false);
-                //parentPipe.sendingGettingEnergy = false;
+                recibingEnd.RecibingPartGetsCharged(false);
+                parentPipe.sendingGettingEnergy = false;
+            }
+        }
+
+        if (myEnergyConector != null)
+        {
+            if (isSendingEnergy)
+            {
+                myEnergyConector.ConectorUpdateAnotherPipeRedEndCharge();
+
+            }
+            else
+            {
+                myEnergyConector.ConectorUpdateAnotherPipeRedEndCharge();
             }
         }
     }

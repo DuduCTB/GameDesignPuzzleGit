@@ -27,20 +27,12 @@ public class TriggerPipeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (recibingGettingEnergy)
-        {
-            givingPipeEnd.isSendingEnergy = true;
-            ChangeMaterialBasedOnEnergy(true);
-        }
-        else
-        {
-
-        }
-
         if (Input.GetKeyDown(KeyCode.X))
         {
-            //CheckIfPipeIsConected();
+
         }
+
+        UpdatePipeCharge();
     }
 
     private void ChangeMaterialBasedOnEnergy(bool isConnectedToEnergy)
@@ -55,6 +47,19 @@ public class TriggerPipeManager : MonoBehaviour
         }
     }
 
+    public void UpdatePipeCharge()
+    {
+        if (recibingGettingEnergy)
+        {
+            givingPipeEnd.isSendingEnergy = true;
+            ChangeMaterialBasedOnEnergy(true);
+        }
+        else
+        {
+            givingPipeEnd.isSendingEnergy = false;
+            ChangeMaterialBasedOnEnergy(false);
+        }
+    }
 
     private void OnDrawGizmos()
     {
