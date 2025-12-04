@@ -4,34 +4,52 @@ using UnityEngine;
 
 public class GivingEnergyEnd : MonoBehaviour
 {
-    private TriggerPipeManager parentPipe;
+    [SerializeField] private TriggerPipeManager parentPipe;
     public bool isSendingEnergy;
     public bool connectedToAnotherPipe;
+    [SerializeField] private  RecibingEndPipe recibingEnd;
 
     private void Awake()
     {
         parentPipe = GetComponentInParent<TriggerPipeManager>();
     }
 
+    private void Update()
+    {
+        UpdateAnotherPipeRedEndCharge();
+    }
+
     private void OnTriggerEnter(Collider detection)
     {
         if (detection.CompareTag("recibingEnd"))
         {
-            connectedToAnotherPipe = true;
-            RecibingEndPipe recibingEnd = detection.GetComponent<RecibingEndPipe>();
 
-            if (recibingEnd.isCharged)
+            Debug.Log("Parte giving (azul) propia conectada con recibing (azul) ajena");
+            connectedToAnotherPipe = true;
+            recibingEnd = detection.GetComponent<RecibingEndPipe>();
+
+            Debug.Log("extremo detectedado azul se llama = " + recibingEnd.name);
+        }
+
+    }
+
+    private void UpdateAnotherPipeRedEndCharge()
+    {
+
+        if (recibingEnd != null)
+        {
+            if (isSendingEnergy)
             {
-                isSendingEnergy = true;
+                recibingEnd.RecibingPartGetsCharged(true);
                 parentPipe.sendingGettingEnergy = true;
-                
+                Debug.Log("Parte roja ha cargado parte azul");
+
             }
             else
             {
-                isSendingEnergy = false;
-                parentPipe.sendingGettingEnergy = false;
+                //recibingEnd.RecibingPartGetsCharged(false);
+                //parentPipe.sendingGettingEnergy = false;
             }
         }
-
     }
 }

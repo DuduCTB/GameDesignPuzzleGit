@@ -16,15 +16,17 @@ public class EnergySource : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.transform.CompareTag("recibingEnd"))
         {
+            Debug.Log("Source contactando con recibing End");
             RecibingEndPipe recibingEnd = collision.transform.GetComponent<RecibingEndPipe>();
 
             if (sourceChargedUp)
             {
-                recibingEnd.isCharged = true;
+                recibingEnd.RecibingPartGetsCharged(true);
             }
         }
 
@@ -39,15 +41,15 @@ public class EnergySource : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider collision)
     {
         if (collision.transform.CompareTag("recibingEnd"))
         {
             RecibingEndPipe recibingEnd = collision.transform.GetComponent<RecibingEndPipe>();
 
-            if (sourceChargedUp && recibingEnd.connectedToAnotherPipe )
+            if (sourceChargedUp && recibingEnd.connectedToAnotherPipe)
             {
-                recibingEnd.isCharged = false;
+                //recibingEnd.isCharged = false;
             }
         }
 

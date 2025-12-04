@@ -27,7 +27,7 @@ public class TriggerPipeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (sendingGettingEnergy)
+        if (recibingGettingEnergy)
         {
             givingPipeEnd.isSendingEnergy = true;
             ChangeMaterialBasedOnEnergy(true);

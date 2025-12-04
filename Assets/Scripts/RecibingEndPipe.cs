@@ -5,7 +5,7 @@ using UnityEngine;
 public class RecibingEndPipe : MonoBehaviour
 {
 
-    private TriggerPipeManager parentPipe;
+    [SerializeField] private TriggerPipeManager parentPipe;
     public bool isCharged;
     public bool connectedToAnotherPipe;
 
@@ -20,19 +20,27 @@ public class RecibingEndPipe : MonoBehaviour
     {
         if (detection.CompareTag("givingEnd"))
         {
+            Debug.Log("Parte que recibe  azul detecta parte roja ajena");
+
             GivingEnergyEnd givingEnd = detection.GetComponent<GivingEnergyEnd>();
             connectedToAnotherPipe = true;
-            if (givingEnd.isSendingEnergy)
-            {
-                isCharged = true;
-                parentPipe.recibingGettingEnergy = true;
-            }
-            else
-            {
-                parentPipe.recibingGettingEnergy = false;
-                isCharged = false;
-            }
+            //if (givingEnd.isSendingEnergy)
+            //{
+            //    isCharged = true;
+            //    parentPipe.recibingGettingEnergy = true;
+            //}
+            //else
+            //{
+            //    parentPipe.recibingGettingEnergy = false;
+            //    isCharged = false;
+            //}
         }
 
+    }
+
+    public void RecibingPartGetsCharged(bool value)
+    {
+        isCharged = value;
+        parentPipe.recibingGettingEnergy = value;
     }
 }
