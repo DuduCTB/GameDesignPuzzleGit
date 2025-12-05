@@ -7,9 +7,11 @@ public class EnergyConector : MonoBehaviour
     public bool conectorCharged;
     public bool touchingEnergySource;
     public bool energyFromPipe;
+    public bool conectorComesFromGiver;
     public bool energyFromSource;
     [SerializeField] private RecibingEndPipe recibingEnd;
     [SerializeField] private GivingEnergyEnd givingEnd;
+    [SerializeField] private ZeldaEnergySource savedEnergySource;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,7 @@ public class EnergyConector : MonoBehaviour
         {
             Debug.Log("Conector detectando extremo rojo ");
             givingEnd = detection.GetComponent<GivingEnergyEnd>();
+            conectorComesFromGiver = true;
         }
 
         if (detection.CompareTag("energySource"))
@@ -43,13 +46,19 @@ public class EnergyConector : MonoBehaviour
             ZeldaEnergySource energySource = detection.GetComponent<ZeldaEnergySource>();
             touchingEnergySource = true;
 
+            if (conectorComesFromGiver) savedEnergySource = energySource;
+
             if (energySource != null)
             {
-                if (conectorCharged)
+                if (conectorCharged && energyFromPipe)
                 {
+                    savedEnergySource = energySource;
                     energySource.sourceChargedUp = true;
+                    energySource.conectedToAPipeChargedConector = true;
                 }
             }
+
+           
         }
 
     }
@@ -69,7 +78,21 @@ public class EnergyConector : MonoBehaviour
                 {
                     energySource.sourceChargedUp = false;
                 }
+
+                if (conectorCharged && !energyFromPipe && !touchingEnergySource)
+                {
+                    energyFromSource = false;
+                    conectorCharged = false;
+                    ConectorUpdateAnotherPipeRedEndCharge();
+                }
+
+                if (energyFromPipe)
+                {
+                    energySource.conectedToAPipeChargedConector = false;
+                }
+
             }
+            savedEnergySource = null;
         }
     }
 
@@ -97,12 +120,44 @@ public class EnergyConector : MonoBehaviour
             {
                 energyFromPipe = true;
                 conectorCharged = true;
+                if (savedEnergySource != null && touchingEnergySource)
+                {
+                    savedEnergySource.conectedToAPipeChargedConector = true;
+                    savedEnergySource.sourceChargedUp = true;
+                    savedEnergySource.dischargeIsDisabled = false;
+                }
             }
             else
             {
+                if (energyFromPipe && savedEnergySource != null)
+                {
+                    savedEnergySource.conectedToAPipeChargedConector = false;
+                }
+
                 energyFromPipe = false;
                 conectorCharged = false;
             }
         }
+
+        if (conectorCharged && !energyFromPipe && !touchingEnergySource && !energyFromSource)
+        {
+            conectorCharged = false;
+
+            if (recibingEnd != null)
+            {
+                recibingEnd.RecibingPartGetsCharged(false);
+            }
+        }
+        else
+        {
+            if (savedEnergySource != null && !conectorCharged)
+            {
+                savedEnergySource.conectedToAPipeChargedConector = false;
+                savedEnergySource.sourceChargedUp = false;
+            }
+        }
+
+
+
     }
 }
