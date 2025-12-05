@@ -1088,7 +1088,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1680
+  m_VersionIndex: 1689
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1903,7 +1903,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1053
+  m_VersionIndex: 1062
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2040,7 +2040,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7331388299001455949}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -40, y: 4.6, z: 0}
   m_LocalScale: {x: 9, y: 9, z: 9}
   m_ConstrainProportionsScale: 1
@@ -2113,11 +2113,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.8, z: 1.4}
+  m_Size: {x: 1.25, y: 0.8, z: 1.4}
   m_Center: {x: 0, y: -0.2, z: 0}
 --- !u!114 &2911091446287703501
 MonoBehaviour:
@@ -2134,9 +2134,11 @@ MonoBehaviour:
   conectorCharged: 0
   touchingEnergySource: 0
   energyFromPipe: 0
+  conectorComesFromGiver: 0
   energyFromSource: 0
   recibingEnd: {fileID: 0}
   givingEnd: {fileID: 0}
+  savedEnergySource: {fileID: 0}
 --- !u!54 &3061754015151618000
 Rigidbody:
   m_ObjectHideFlags: 0

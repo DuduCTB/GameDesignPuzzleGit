@@ -105,7 +105,7 @@ public class ZeldaEnergySource : MonoBehaviour
             
         }
 
-        if (!sourceChargedUp && touchingConnectorsAmount >= 1 && !dischargeIsDisabled)
+        if (!sourceChargedUp && touchingConnectorsAmount >= 1 && !dischargeIsDisabled && connectorToDischarge != null)
         {
             connectorToDischarge.energyFromSource = false;
             connectorToDischarge.conectorCharged = false;
