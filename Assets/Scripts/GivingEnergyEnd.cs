@@ -9,6 +9,7 @@ public class GivingEnergyEnd : MonoBehaviour
     public bool connectedToAnotherPipe;
     [SerializeField] private  RecibingEndPipe recibingEnd;
     [SerializeField] private  EnergyConector myEnergyConector;
+    [SerializeField] private  LampBehaviour lampNearby;
 
     private void Awake()
     {
@@ -42,6 +43,15 @@ public class GivingEnergyEnd : MonoBehaviour
             Debug.Log("extremo detectedado azul se llama = " + recibingEnd.name);
         }
 
+        if (detection.CompareTag("energyLamp"))
+        {
+            lampNearby = detection.GetComponent<LampBehaviour>();
+
+            Debug.Log("extremo detectedado azul se llama = " + recibingEnd.name);
+        }
+
+
+
     }
 
     private void UpdateAnotherPipeRedEndCharge()
@@ -73,6 +83,19 @@ public class GivingEnergyEnd : MonoBehaviour
             else
             {
                 myEnergyConector.ConectorUpdateAnotherPipeRedEndCharge();
+            }
+        }
+
+        if (lampNearby != null)
+        {
+            if (isSendingEnergy)
+            {
+                lampNearby.ToggleLamp(true);
+
+            }
+            else
+            {
+                lampNearby.ToggleLamp(false);
             }
         }
     }
