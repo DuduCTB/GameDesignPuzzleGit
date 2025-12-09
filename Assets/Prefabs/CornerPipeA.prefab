@@ -2959,6 +2959,10 @@ MonoBehaviour:
   parentPipe: {fileID: 0}
   isCharged: 0
   connectedToAnotherPipe: 0
+  detectionRadius: 0.1
+  pipesLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!54 &5465901796743423753
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3110,6 +3114,12 @@ MonoBehaviour:
   connectedToAnotherPipe: 0
   recibingEnd: {fileID: 0}
   myEnergyConector: {fileID: 0}
+  lampNearby: {fileID: 0}
+  detectionRadius: 0.1
+  pipesLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  detectingPipes: 1
 --- !u!54 &2130257289808788663
 Rigidbody:
   m_ObjectHideFlags: 0

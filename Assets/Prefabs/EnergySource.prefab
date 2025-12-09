@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3463412529834204408}
   - component: {fileID: 842525658461004706}
   - component: {fileID: 7928061501682081930}
+  - component: {fileID: 4868786446345210849}
   m_Layer: 0
   m_Name: EnergySource
   m_TagString: energySource
@@ -29,9 +30,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5398911233017671853}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -41.1, y: 2.57, z: -2.43}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -130,9 +131,9 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!114 &7928061501682081930
 MonoBehaviour:
@@ -148,3 +149,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceChargedUp: 0
   isAnInfiniteSource: 1
+  conectedToAPipeChargedConector: 0
+  dischargeIsDisabled: 0
+  touchingConnectorsAmount: 0
+  connectorToDischarge: {fileID: 0}
+  pipesLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  detectionRadius: 0.5
+--- !u!65 &4868786446345210849
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5398911233017671853}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.000000059604645, z: -0.0000009536743}

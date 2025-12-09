@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class LampBehaviour : MonoBehaviour
@@ -12,6 +13,9 @@ public class LampBehaviour : MonoBehaviour
     private Renderer myRenderer;
 
     [SerializeField] private bool isLampTurnedOn;
+
+    public UnityEvent OnLampTurnedOn;
+    public UnityEvent OnLampTurnedOff;
 
     public bool IsLampTurnedOn
     {
@@ -51,6 +55,9 @@ public class LampBehaviour : MonoBehaviour
 
     public void ToggleLamp(bool value)
     {
+        if (value && !isLampTurnedOn) OnLampTurnedOn.Invoke();
+        if (!value && isLampTurnedOn) OnLampTurnedOff.Invoke();
+
         IsLampTurnedOn = value;  
     }
 

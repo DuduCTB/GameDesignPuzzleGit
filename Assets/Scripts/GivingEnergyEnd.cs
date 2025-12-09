@@ -10,48 +10,76 @@ public class GivingEnergyEnd : MonoBehaviour
     [SerializeField] private  RecibingEndPipe recibingEnd;
     [SerializeField] private  EnergyConector myEnergyConector;
     [SerializeField] private  LampBehaviour lampNearby;
+    [SerializeField] private  float detectionRadius = 0.1f;
+    [SerializeField] private LayerMask pipesLayer;
+    [SerializeField] private bool detectingPipes = true;
+    private Rigidbody rb;
 
     private void Awake()
     {
+        rb = GetComponentInParent<Rigidbody>();
         parentPipe = GetComponentInParent<TriggerPipeManager>();
     }
 
-    private void Update()
+    private void Start()
     {
-        UpdateAnotherPipeRedEndCharge();
+        StartCoroutine(UpdateAdjacentStuff());
     }
 
-    private void OnTriggerEnter(Collider detection)
+    private void OnDrawGizmos()
     {
-        if (detection.CompareTag("recibingEnd"))
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+    }
+
+    private void DetectStuffNearGivingEnd()
+    {
+        Collider[] detectedStuff = Physics.OverlapSphere (transform.position, detectionRadius, pipesLayer);
+        recibingEnd = null;
+        myEnergyConector = null;
+        lampNearby = null;
+
+        foreach (Collider detectedObject in detectedStuff)
         {
 
-            Debug.Log("Parte giving (azul) propia conectada con recibing (azul) ajena");
-            connectedToAnotherPipe = true;
-            recibingEnd = detection.GetComponent<RecibingEndPipe>();
+            if (detectedObject.CompareTag("energyConnector"))
+            {
 
-            Debug.Log("extremo detectedado azul se llama = " + recibingEnd.name);
+                //Debug.Log("Parte giving (azul) propia conectada con recibing (azul) ajena");
+                connectedToAnotherPipe = true;
+                myEnergyConector = detectedObject.GetComponent<EnergyConector>();
+
+                //Debug.Log("extremo detectedado azul se llama = " + recibingEnd.name);
+            }
+
+            if (detectedObject.CompareTag("recibingEnd"))
+            {
+
+                //Debug.Log("Parte giving (azul) propia conectada con recibing (azul) ajena");
+                connectedToAnotherPipe = true;
+                recibingEnd = detectedObject.GetComponent<RecibingEndPipe>();
+
+                //Debug.Log("extremo detectedado azul se llama = " + recibingEnd.name);
+            }
+
+            if (detectedObject.transform.CompareTag("energyLamp"))
+            {
+                lampNearby = detectedObject.GetComponent<LampBehaviour>();
+            }
         }
+    }
 
-        if (detection.CompareTag("energyConnector"))
+    private IEnumerator UpdateAdjacentStuff()
+    {
+        WaitForSeconds wait = new WaitForSeconds(0.1f);
+
+        while (detectingPipes)
         {
-
-            Debug.Log("Parte giving (azul) propia conectada con recibing (azul) ajena");
-            connectedToAnotherPipe = true;
-            myEnergyConector = detection.GetComponent<EnergyConector>();
-
-            Debug.Log("extremo detectedado azul se llama = " + recibingEnd.name);
+            DetectStuffNearGivingEnd();
+            UpdateAnotherPipeRedEndCharge();
+            rb.WakeUp();
+            yield return wait;
         }
-
-        if (detection.CompareTag("energyLamp"))
-        {
-            lampNearby = detection.GetComponent<LampBehaviour>();
-
-            Debug.Log("extremo detectedado azul se llama = " + recibingEnd.name);
-        }
-
-
-
     }
 
     private void UpdateAnotherPipeRedEndCharge()
@@ -63,7 +91,7 @@ public class GivingEnergyEnd : MonoBehaviour
             {
                 recibingEnd.RecibingPartGetsCharged(true);
                 parentPipe.sendingGettingEnergy = true;
-                Debug.Log("Parte roja ha cargado parte azul");
+                //Debug.Log("Parte roja ha cargado parte azul");
 
             }
             else

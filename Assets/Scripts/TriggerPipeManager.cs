@@ -13,6 +13,7 @@ public class TriggerPipeManager : MonoBehaviour
     [SerializeField] public GivingEnergyEnd givingPipeEnd;
 
 
+
     private void Awake()
     {
         myRenderer = GetComponent<Renderer>();
@@ -59,6 +60,11 @@ public class TriggerPipeManager : MonoBehaviour
             givingPipeEnd.isSendingEnergy = false;
             ChangeMaterialBasedOnEnergy(false);
         }
+    }
+
+    public void TurnOnOfPipeManually(bool on) 
+    {
+        recibingGettingEnergy = on;
     }
 
     private void OnDrawGizmos()

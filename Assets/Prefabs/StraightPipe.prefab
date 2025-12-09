@@ -866,7 +866,6 @@ GameObject:
   - component: {fileID: 8955612232239525781}
   - component: {fileID: 9014195280105388223}
   - component: {fileID: 3391496612731665731}
-  - component: {fileID: 8194977721474866329}
   m_Layer: 6
   m_Name: RecibingEndExterior
   m_TagString: recibingEnd
@@ -975,33 +974,10 @@ MonoBehaviour:
   parentPipe: {fileID: 0}
   isCharged: 0
   connectedToAnotherPipe: 0
---- !u!54 &8194977721474866329
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3296724369676978351}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
+  detectionRadius: 0.1
+  pipesLayer:
     serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+    m_Bits: 64
 --- !u!1 &3360867833805447467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1856,7 +1832,6 @@ GameObject:
   - component: {fileID: 7237673516202567527}
   - component: {fileID: 8395922765710225546}
   - component: {fileID: 8418994192133684734}
-  - component: {fileID: 8799173144295841587}
   m_Layer: 6
   m_Name: GivingEnd
   m_TagString: givingEnd
@@ -1967,33 +1942,12 @@ MonoBehaviour:
   connectedToAnotherPipe: 0
   recibingEnd: {fileID: 0}
   myEnergyConector: {fileID: 0}
---- !u!54 &8799173144295841587
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4118651677487850530}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
+  lampNearby: {fileID: 0}
+  detectionRadius: 0.1
+  pipesLayer:
     serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+    m_Bits: 64
+  detectingPipes: 1
 --- !u!1 &5021448943333170220
 GameObject:
   m_ObjectHideFlags: 0
@@ -2007,6 +1961,7 @@ GameObject:
   - component: {fileID: 6404571404963986960}
   - component: {fileID: 874085810861034743}
   - component: {fileID: 2846106518724619277}
+  - component: {fileID: 5412310107348817869}
   m_Layer: 6
   m_Name: StraightPipe
   m_TagString: Untagged
@@ -2124,6 +2079,33 @@ MonoBehaviour:
   recibingGettingEnergy: 0
   sendingGettingEnergy: 0
   givingPipeEnd: {fileID: 8418994192133684734}
+--- !u!54 &5412310107348817869
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5021448943333170220}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7691075918900166422
 GameObject:
   m_ObjectHideFlags: 0

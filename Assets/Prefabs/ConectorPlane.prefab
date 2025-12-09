@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4972663315553625516}
   - component: {fileID: 6952397130914185421}
   - component: {fileID: 4275809943638078846}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ConectorPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,10 +115,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2892696467340654551}
     m_Modifications:
-    - target: {fileID: 2714733120317798945, guid: bc6fb7ce27123804088f83bf3755baab,
+    - target: {fileID: 1509022012559535776, guid: bc6fb7ce27123804088f83bf3755baab,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911091446287703501, guid: bc6fb7ce27123804088f83bf3755baab,
+        type: 3}
+      propertyPath: pipesLayer.m_Bits
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 3117780691729031957, guid: bc6fb7ce27123804088f83bf3755baab,
         type: 3}
@@ -170,40 +175,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4154885910049304020, guid: bc6fb7ce27123804088f83bf3755baab,
+    - target: {fileID: 4415606348189922975, guid: bc6fb7ce27123804088f83bf3755baab,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_Size.x
+      value: 1.86
       objectReference: {fileID: 0}
-    - target: {fileID: 5463613465796882059, guid: bc6fb7ce27123804088f83bf3755baab,
+    - target: {fileID: 4415606348189922975, guid: bc6fb7ce27123804088f83bf3755baab,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_Size.z
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049032477570596557, guid: bc6fb7ce27123804088f83bf3755baab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5463613465796882059, guid: bc6fb7ce27123804088f83bf3755baab,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1686
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949039623711952764, guid: bc6fb7ce27123804088f83bf3755baab,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6982387425390596505, guid: bc6fb7ce27123804088f83bf3755baab,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 1689
       objectReference: {fileID: 0}
     - target: {fileID: 6982387425390596505, guid: bc6fb7ce27123804088f83bf3755baab,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1059
+      value: 1062
       objectReference: {fileID: 0}
     - target: {fileID: 7331388299001455949, guid: bc6fb7ce27123804088f83bf3755baab,
         type: 3}
       propertyPath: m_Name
       value: EnergyConectorArea (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331388299001455949, guid: bc6fb7ce27123804088f83bf3755baab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
