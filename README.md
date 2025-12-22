@@ -21,5 +21,8 @@ based on connecting electrical circuits.
 - Use interfaces so systems like levers are not tied to specific objects
   and can be reused for any interactable element
 
+## Credits / External Assets
+- The First Person Controller and the object pickup system are from packages and were not developed by me.
+
 ## Current State
 Student project / technical demo
