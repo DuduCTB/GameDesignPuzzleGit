@@ -1134,6 +1134,7 @@ MonoBehaviour:
   givingConnected: 0
   pipeOnMaterial: {fileID: 2100000, guid: 2decf00fc4faefa43820fc4bbd1ed46b, type: 2}
   pipeOffMaterial: {fileID: 2100000, guid: 85ce7522c1655c7488106807ec7956af, type: 2}
+  myRenderer: {fileID: 361160766447186960}
   recibingGettingEnergy: 0
   sendingGettingEnergy: 0
   givingPipeEnd: {fileID: 7959642607969493006}
@@ -3236,6 +3237,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f0d2bb585fdc9147ab970d8d6f3b720, type: 3}
+--- !u!23 &361160766447186960 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2965595751571501051, guid: 4f0d2bb585fdc9147ab970d8d6f3b720,
+    type: 3}
+  m_PrefabInstance: {fileID: 3180931472097270763}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4548747313680483686 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1370384867715964557, guid: 4f0d2bb585fdc9147ab970d8d6f3b720,

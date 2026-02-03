@@ -8,7 +8,7 @@ public class TriggerPipeManager : MonoBehaviour
     [SerializeField] private bool recibingConnected, givingConnected;
     [SerializeField] private Material pipeOnMaterial, pipeOffMaterial;
 
-    private Renderer myRenderer;
+    [SerializeField] private Renderer myRenderer;
     public bool recibingGettingEnergy, sendingGettingEnergy;
     [SerializeField] public GivingEnergyEnd givingPipeEnd;
 
@@ -16,7 +16,7 @@ public class TriggerPipeManager : MonoBehaviour
 
     private void Awake()
     {
-        myRenderer = GetComponent<Renderer>();
+        //myRenderer = GetComponent<Renderer>();
     }
 
     // Start is called before the first frame update

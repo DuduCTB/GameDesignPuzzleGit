@@ -10,7 +10,7 @@ public class LampBehaviour : MonoBehaviour
     [SerializeField] private float detectionRadius;
     [SerializeField] private LayerMask pipesLayer;
     [SerializeField] private Material lampOnMaterial, lampOffMaterial;
-    private Renderer myRenderer;
+    [SerializeField] private Renderer myRenderer;
 
     [SerializeField] private bool isLampTurnedOn;
 
@@ -30,7 +30,7 @@ public class LampBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        myRenderer = GetComponent<Renderer>();
+        //myRenderer = GetComponent<Renderer>();
     }
 
     // Start is called before the first frame update
