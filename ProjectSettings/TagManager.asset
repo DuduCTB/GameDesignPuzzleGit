@@ -9,6 +9,7 @@ TagManager:
   - energyConnector
   - energySource
   - energyLamp
+  - Button
   layers:
   - Default
   - TransparentFX

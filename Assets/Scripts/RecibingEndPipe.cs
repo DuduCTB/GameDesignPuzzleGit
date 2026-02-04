@@ -46,18 +46,15 @@ public class RecibingEndPipe : MonoBehaviour
         Collider[] detectedStuff = Physics.OverlapSphere(transform.position, detectionRadius, pipesLayer);
         adjacentGivingEnd = null;
         adjacentConnector = null;
+
         foreach (Collider detectedObject in detectedStuff)
         {
-
             if (detectedObject.CompareTag("givingEnd"))
             {
                 //Debug.Log("Parte que recibe  azul detecta parte roja ajena");
-
                 adjacentGivingEnd = detectedObject.GetComponent<GivingEnergyEnd>();
                 connectedToAnotherPipe = true;
-
             }
-
 
             if (detectedObject.CompareTag("energyConnector"))
             {

@@ -1,17 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ObjectGrabber : MonoBehaviour
 {
+
+    public Camera cam;
+    public float distance = 10f;
+
     public float grabDistance = 3f;
     public float moveForce = 50f;
     public Transform grabPoint;   // Empty object in front of the camera
     public float rotationSpeed = 100f;
 
     [SerializeField] private LayerMask objectLayer;
+    [SerializeField] private LayerMask UILayer;
 
     private Rigidbody grabbedObject;
+
+    //public GraphicRaycaster raycaster;
+    public EventSystem eventSystem;
 
     void Update()
     {
@@ -20,6 +31,9 @@ public class ObjectGrabber : MonoBehaviour
 
         if (grabbedObject)
             HandleRotationInput();
+
+        CheckUIButton();
+
     }
 
     void FixedUpdate()
@@ -91,4 +105,25 @@ public class ObjectGrabber : MonoBehaviour
             grabbedObject.transform.Rotate(0f, rotationAmount, 0f, Space.World);
         }
     }
+
+    private void CheckUIButton()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, grabDistance, UILayer))
+            {
+                ExecuteEvents.Execute(hit.collider.gameObject,
+                new PointerEventData(eventSystem),
+                ExecuteEvents.pointerClickHandler);
+
+                Debug.Log("Click UI en: " + hit.collider.name);
+            }
+        }
+
+
+    }
+
 }
