@@ -12922,7 +12922,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.5, y: -0.83, z: -25.58}
-  m_LocalScale: {x: 7.787239, y: 3.0963929, z: 0.42548}
+  m_LocalScale: {x: 4.635921, y: 4.062371, z: 0.46171755}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 183368131}
@@ -47615,7 +47615,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1751735cd8cb96141bb9c1a10011ff2e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -60560,7 +60560,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.5, y: -0.83, z: -25.26}
-  m_LocalScale: {x: 7.3109956, y: 2.4669273, z: 0.3389842}
+  m_LocalScale: {x: 3.821249, y: 3.2365317, z: 0.367855}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1456518665}
@@ -61631,7 +61631,7 @@ PrefabInstance:
     - target: {fileID: 1272636498036092153, guid: 31ee557f374575b40871d637b9680fbd,
         type: 3}
       propertyPath: OnLampTurnedOff.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1272636498036092153, guid: 31ee557f374575b40871d637b9680fbd,
         type: 3}
